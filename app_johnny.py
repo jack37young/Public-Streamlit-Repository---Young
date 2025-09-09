@@ -4,23 +4,19 @@ import pandas as pd
 import os 
 from datetime import date
 
-# --- Page Navigation Functions ---
+excel_file = "johnny_freeze_sales.xlsx"
+
+# Page Navigation Functions
 def go_to_page(page_name):
-    """Function to switch the page."""
     st.session_state.page = page_name
 
 def flavor_page(flavor_name):
-    """
-    Generates the UI for a specific flavor page.
-    This function replaces the repetitive code blocks for each flavor.
-    """
     st.title(flavor_name)
-    
-    # Get the current date and allow the user to change it
+
+    #Number and Date inputs
     current_date = date.today()
     selected_date = st.date_input("Date:", value=current_date)
     
-    # Number input for cups sold
     number = st.number_input(f"How many cups of {flavor_name} sold:", min_value=0, value=0)
     
     if st.button("Submit Sales"):
@@ -34,11 +30,11 @@ def flavor_page(flavor_name):
     if st.button("Back to Home"):
         go_to_page("home")
 
-# --- Initialize Session State ---
+# Initialize Session State
 if "page" not in st.session_state:
     st.session_state.page = "home"
     
-# Flavors list and a dictionary to map them to page names
+# Flavors
 flavors = [
     "-",
     "Blue Raspberry",
@@ -51,7 +47,7 @@ flavors = [
     "Arctic Blast"
 ]
 
-# A dictionary to map human-readable flavor names to simple page identifiers
+# Flavor and Page Dictionary
 flavor_page_map = {
     "Blue Raspberry": "blue_razz",
     "Tiger Blood": "tiger_blood",
@@ -63,11 +59,11 @@ flavor_page_map = {
     "Arctic Blast": "arctic_blast"
 }
 
-# --- Main App Logic ---
+# Main App
 
 # Home Page
 if st.session_state.page == "home":
-    st.title("Welcome to the Sales Tracker!")
+    st.title("Johnny Freeze Sales Inputs")
     st.write("Select a flavor to enter its daily sales data.")
     
     selected_flavor = st.selectbox("Choose a flavor:", flavors)
@@ -79,7 +75,6 @@ if st.session_state.page == "home":
 
 # Flavor Pages
 elif st.session_state.page in flavor_page_map.values():
-    # Find the flavor name from the current page identifier
     current_flavor = next(key for key, value in flavor_page_map.items() if value == st.session_state.page)
     flavor_page(current_flavor)
 
