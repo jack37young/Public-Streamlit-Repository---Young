@@ -29,7 +29,22 @@ flavors = [
 if st.session_state.page == "home":
     st.title("Welcome! Select a flavor from the dropdown above to enter sales.")
     selected_page = st.selectbox("Choose a flavor:", flavors)
-    st.session_state.page = selected_page
+    if selected_page == "Blue Raspberry":
+        go_to_page("blue_razz")
+    elif selected_page == "Tiger Blood":
+        go_to_page("tiger_blood")
+    elif selected_page == "Banana":
+        go_to_page("banana")
+    elif selected_page == "Wedding Cake":
+        go_to_page("wedding_cake")
+    elif selected_page == "Strawberry Lemonade":
+        go_to_page("straw_lem")
+    elif selected_page == "Sour Apple":
+        go_to_page("sour_apple")
+    elif selected_page == "Cotton Candy":
+        go_to_page("cotton_candy")
+    elif selected_page == "Arctic Blast":
+        go_to_page("arctic_blast")
 
 #Blue Raspberry Page
 if st.session_state.page == "blue_razz":
