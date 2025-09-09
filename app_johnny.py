@@ -1,17 +1,44 @@
+
 import streamlit as st
 import pandas as pd
 import os 
 from datetime import date
 
-# Initialize session state for page navigation
-if "page" not in st.session_state:
-    st.session_state.page = "home"
-
-# Function to switch page
+# --- Page Navigation Functions ---
 def go_to_page(page_name):
+    """Function to switch the page."""
     st.session_state.page = page_name
 
+def flavor_page(flavor_name):
+    """
+    Generates the UI for a specific flavor page.
+    This function replaces the repetitive code blocks for each flavor.
+    """
+    st.title(flavor_name)
+    
+    # Get the current date and allow the user to change it
+    current_date = date.today()
+    selected_date = st.date_input("Date:", value=current_date)
+    
+    # Number input for cups sold
+    number = st.number_input(f"How many cups of {flavor_name} sold:", min_value=0, value=0)
+    
+    if st.button("Submit Sales"):
+        # Write the data to a text file. Note: This will not be persistent on Streamlit Cloud.
+        # For a production app, you would use a database or a cloud storage service.
+        with open("sales_data.txt", "a") as file:
+            file.write(f"{selected_date},{flavor_name},{number}\n")
+        st.success(f"Successfully saved {number} cups of {flavor_name} sales for {selected_date}!")
+    
+    # Button to go back to the home page
+    if st.button("Back to Home"):
+        go_to_page("home")
 
+# --- Initialize Session State ---
+if "page" not in st.session_state:
+    st.session_state.page = "home"
+    
+# Flavors list and a dictionary to map them to page names
 flavors = [
     "-",
     "Blue Raspberry",
@@ -24,187 +51,37 @@ flavors = [
     "Arctic Blast"
 ]
 
+# A dictionary to map human-readable flavor names to simple page identifiers
+flavor_page_map = {
+    "Blue Raspberry": "blue_razz",
+    "Tiger Blood": "tiger_blood",
+    "Banana": "banana",
+    "Wedding Cake": "wedding_cake",
+    "Strawberry Lemonade": "straw_lem",
+    "Sour Apple": "sour_apple",
+    "Cotton Candy": "cotton_candy",
+    "Arctic Blast": "arctic_blast"
+}
 
+# --- Main App Logic ---
 
-    
+# Home Page
 if st.session_state.page == "home":
-    st.title("Welcome! Select a flavor from the dropdown above to enter sales.")
-    selected_page = st.selectbox("Choose a flavor:", flavors)
-    if selected_page == "Blue Raspberry":
-        go_to_page("blue_razz")
-    elif selected_page == "Tiger Blood":
-        go_to_page("tiger_blood")
-    elif selected_page == "Banana":
-        go_to_page("banana")
-    elif selected_page == "Wedding Cake":
-        go_to_page("wedding_cake")
-    elif selected_page == "Strawberry Lemonade":
-        go_to_page("straw_lem")
-    elif selected_page == "Sour Apple":
-        go_to_page("sour_apple")
-    elif selected_page == "Cotton Candy":
-        go_to_page("cotton_candy")
-    elif selected_page == "Arctic Blast":
-        go_to_page("arctic_blast")
+    st.title("Welcome to the Sales Tracker!")
+    st.write("Select a flavor to enter its daily sales data.")
+    
+    selected_flavor = st.selectbox("Choose a flavor:", flavors)
+    
+    if selected_flavor != "-":
+        if st.button(f"Go to {selected_flavor}"):
+            page_id = flavor_page_map[selected_flavor]
+            go_to_page(page_id)
 
-#Blue Raspberry Page
-elif st.session_state.page == "blue_razz":
-    st.title("Blue Raspberry")
-    
-    # Number input
-    date = st.date_input("Date:")
-    number = st.number_input("How many cups sold: ", value=0)
-    
-    if st.button("Submit"):
-        # Write the number to a text file
-        with open("numbers.txt", "a") as file:
-            file.write(f"{date} Blue Raspberry {number}\n")
-        st.success(f"Number {number} saved!")
-    
-    # Back button to go to home page
-    if st.button("Back"):
-        go_to_page("home")
-
-
-#Tiger Blood Page
-elif st.session_state.page == "tiger_blood":
-    st.title("Tiger Blood")
-    
-    # Number input
-    date = st.date_input("Date:")
-    number = st.number_input("How many cups sold: ", value=0)
-    
-    if st.button("Submit"):
-        # Write the number to a text file
-        with open("numbers.txt", "a") as file:
-            file.write(f"{date} Tiger Blood {number}\n")
-        st.success(f"Number {number} saved!")
-    
-    # Back button to go to home page
-    if st.button("Back"):
-        go_to_page("home")
-
-
-#Banana Page
-elif st.session_state.page == "banana":
-    st.title("Banana")
-    
-    # Number input
-    date = st.date_input("Date:")
-    number = st.number_input("How many cups sold: ", value=0)
-    
-    if st.button("Submit"):
-        # Write the number to a text file
-        with open("numbers.txt", "a") as file:
-            file.write(f"{date} Banana {number}\n")
-        st.success(f"Number {number} saved!")
-    
-    # Back button to go to home page
-    if st.button("Back"):
-        go_to_page("home")
-
-
-
-#Wedding Cake Page
-elif st.session_state.page == "wedding_cake":
-    st.title("Wedding Cake")
-    
-    # Number input
-    date = st.date_input("Date:")
-    number = st.number_input("How many cups sold: ", value=0)
-    
-    if st.button("Submit"):
-        # Write the number to a text file
-        with open("numbers.txt", "a") as file:
-            file.write(f"{date} Wedding Cake {number}\n")
-        st.success(f"Number {number} saved!")
-    
-    # Back button to go to home page
-    if st.button("Back"):
-        go_to_page("home")
-
-
-#Strawberry Lemonade Page
-elif st.session_state.page == "straw_lem":
-    st.title("Strawberry Lemonade")
-    
-    # Number input
-    date = st.date_input("Date:")
-    number = st.number_input("How many cups sold: ", value=0)
-    
-    if st.button("Submit"):
-        # Write the number to a text file
-        with open("numbers.txt", "a") as file:
-            file.write(f"{date} Strawberry Lemonade {number}\n")
-        st.success(f"Number {number} saved!")
-    
-    # Back button to go to home page
-    if st.button("Back"):
-        go_to_page("home")
-
-
-#Sour Apple Page
-elif st.session_state.page == "sour_apple":
-    st.title("Sour Apple")
-    
-    # Number input
-    date = st.date_input("Date:")
-    number = st.number_input("How many cups sold: ", value=0)
-    
-    if st.button("Submit"):
-        # Write the number to a text file
-        with open("numbers.txt", "a") as file:
-            file.write(f"{date} Sour Apple {number}\n")
-        st.success(f"Number {number} saved!")
-    
-    # Back button to go to home page
-    if st.button("Back"):
-        go_to_page("home")
-
-
-#Cotton Candy Page
-elif st.session_state.page == "cotton_candy":
-    st.title("Cotton Candy")
-    
-    # Number input
-    date = st.date_input("Date:")
-    number = st.number_input("How many cups sold: ", value=0)
-    
-    if st.button("Submit"):
-        # Write the number to a text file
-        with open("numbers.txt", "a") as file:
-            file.write(f"{date} Cotton Candy {number}\n")
-        st.success(f"Number {number} saved!")
-    
-    # Back button to go to home page
-    if st.button("Back"):
-        go_to_page("home")
-
-
-
-#Arctic Blast Page
-elif st.session_state.page == "arctic_blast":
-    st.title("Arctic Blast")
-    
-    # Number input
-    date = st.date_input("Date:")
-    number = st.number_input("How many cups sold: ", value=0)
-    
-    if st.button("Submit"):
-        # Write the number to a text file
-        with open("numbers.txt", "a") as file:
-            file.write(f"{date} Arctic Blast {number}\n")
-        st.success(f"Number {number} saved!")
-    
-    # Back button to go to home page
-    if st.button("Back"):
-        go_to_page("home")
-
-
-
-
-
-
+# Flavor Pages
+elif st.session_state.page in flavor_page_map.values():
+    # Find the flavor name from the current page identifier
+    current_flavor = next(key for key, value in flavor_page_map.items() if value == st.session_state.page)
+    flavor_page(current_flavor)
 
 
 
