@@ -20,12 +20,29 @@ def flavor_page(flavor_name):
     number = st.number_input(f"How many cups of {flavor_name} sold:", min_value=0, value=0)
     
     if st.button("Submit Sales"):
-        # Write the data to a text file. Note: This will not be persistent on Streamlit Cloud.
-        # For a production app, you would use a database or a cloud storage service.
-        with open("sales_data.txt", "a") as file:
-            file.write(f"{selected_date},{flavor_name},{number}\n")
+        try:
+            # Read the existing Excel file into a DataFrame
+            # The first column is designated to the dates
+            df = pd.read_excel(excel_file, index_col=0)
+        except FileNotFoundError:
+            # Error Checking in case file does not exist
+            df = pd.DataFrame()
+            # Fill any missing values with 0
+        df = df.fillna(0)
+        
+        # Make sure the date is in the correct Datetime
+        df.index = pd.to_datetime(df.index)
+        
+        # Convert the selected date to a datetime object
+        selected_date_dt = pd.to_datetime(selected_date)
+
+        # Update the DataFrame with the new sales data, creates a new row if date does not yet exist
+        # The .at method is used for fast scalar access
+        df.at[selected_date_dt, flavor_name] += number
+        df.to_excel(EXCEL_FILE, index=True)
         st.success(f"Successfully saved {number} cups of {flavor_name} sales for {selected_date}!")
-    
+
+        
     # Button to go back to the home page
     if st.button("Back to Home"):
         go_to_page("home")
