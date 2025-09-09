@@ -36,10 +36,13 @@ def flavor_page(flavor_name):
         # Convert the selected date to a datetime object
         selected_date_dt = pd.to_datetime(selected_date)
 
+        # Get the current value, defaulting to 0 if the cell is empty or doesn't exist
+        current_sales = df.at[selected_date_dt, flavor_name] if selected_date_dt in df.index and flavor_name in df.columns else 0
+
         # Update the DataFrame with the new sales data, creates a new row if date does not yet exist
         # The .at method is used for fast scalar access
-        df.at[selected_date_dt, flavor_name] += number
-        df.to_excel(EXCEL_FILE, index=True)
+        df.at[selected_date_dt, flavor_name] = current_sales + number
+        df.to_excel(excel_file, index=True)
         st.success(f"Successfully saved {number} cups of {flavor_name} sales for {selected_date}!")
 
         
