@@ -46,7 +46,7 @@ elif st.session_state.page == "blue_razz":
     if st.button("Submit"):
         # Write the number to a text file
         with open("numbers.txt", "a") as file:
-            file.write(f"{number}\n")
+            file.write(f"{date} Blue Raspberry {number}\n")
         st.success(f"Number {number} saved!")
     
     # Back button to go to home page
@@ -54,9 +54,9 @@ elif st.session_state.page == "blue_razz":
         go_to_page("home")
 
 
-#Blue Raspberry Page
-elif st.session_state.page == "blue_razz":
-    st.title("Blue Raspberry")
+#Tiger Blood Page
+elif st.session_state.page == "tiger_blood":
+    st.title("Tiger Blood")
     
     # Number input
     date = st.date_input("Date:")
@@ -65,7 +65,7 @@ elif st.session_state.page == "blue_razz":
     if st.button("Submit"):
         # Write the number to a text file
         with open("numbers.txt", "a") as file:
-            file.write(f"{number}\n")
+            file.write(f"{date} Tiger Blood {number}\n")
         st.success(f"Number {number} saved!")
     
     # Back button to go to home page
@@ -73,9 +73,9 @@ elif st.session_state.page == "blue_razz":
         go_to_page("home")
 
 
-#Blue Raspberry Page
-elif st.session_state.page == "blue_razz":
-    st.title("Blue Raspberry")
+#Banana Page
+elif st.session_state.page == "banana":
+    st.title("Banana")
     
     # Number input
     date = st.date_input("Date:")
@@ -84,7 +84,7 @@ elif st.session_state.page == "blue_razz":
     if st.button("Submit"):
         # Write the number to a text file
         with open("numbers.txt", "a") as file:
-            file.write(f"{number}\n")
+            file.write(f"{date} Banana {number}\n")
         st.success(f"Number {number} saved!")
     
     # Back button to go to home page
@@ -93,16 +93,100 @@ elif st.session_state.page == "blue_razz":
 
 
 
+#Wedding Cake Page
+elif st.session_state.page == "wedding_cake":
+    st.title("Wedding Cake")
+    
+    # Number input
+    date = st.date_input("Date:")
+    number = st.number_input("How many cups sold: ", value=0)
+    
+    if st.button("Submit"):
+        # Write the number to a text file
+        with open("numbers.txt", "a") as file:
+            file.write(f"{date} Wedding Cake {number}\n")
+        st.success(f"Number {number} saved!")
+    
+    # Back button to go to home page
+    if st.button("Back"):
+        go_to_page("home")
+
+
+#Strawberry Lemonade Page
+elif st.session_state.page == "straw_lem":
+    st.title("Strawberry Lemonade")
+    
+    # Number input
+    date = st.date_input("Date:")
+    number = st.number_input("How many cups sold: ", value=0)
+    
+    if st.button("Submit"):
+        # Write the number to a text file
+        with open("numbers.txt", "a") as file:
+            file.write(f"{date} Strawberry Lemonade {number}\n")
+        st.success(f"Number {number} saved!")
+    
+    # Back button to go to home page
+    if st.button("Back"):
+        go_to_page("home")
+
+
+#Sour Apple Page
+elif st.session_state.page == "sour_apple":
+    st.title("Sour Apple")
+    
+    # Number input
+    date = st.date_input("Date:")
+    number = st.number_input("How many cups sold: ", value=0)
+    
+    if st.button("Submit"):
+        # Write the number to a text file
+        with open("numbers.txt", "a") as file:
+            file.write(f"{date} Sour Apple {number}\n")
+        st.success(f"Number {number} saved!")
+    
+    # Back button to go to home page
+    if st.button("Back"):
+        go_to_page("home")
+
+
+#Cotton Candy Page
+elif st.session_state.page == "cotton_candy":
+    st.title("Cotton Candy")
+    
+    # Number input
+    date = st.date_input("Date:")
+    number = st.number_input("How many cups sold: ", value=0)
+    
+    if st.button("Submit"):
+        # Write the number to a text file
+        with open("numbers.txt", "a") as file:
+            file.write(f"{date} Cotton Candy {number}\n")
+        st.success(f"Number {number} saved!")
+    
+    # Back button to go to home page
+    if st.button("Back"):
+        go_to_page("home")
 
 
 
-
-
-
-
-
-
-
+#Arctic Blast Page
+elif st.session_state.page == "arctic_blast":
+    st.title("Arctic Blast")
+    
+    # Number input
+    date = st.date_input("Date:")
+    number = st.number_input("How many cups sold: ", value=0)
+    
+    if st.button("Submit"):
+        # Write the number to a text file
+        with open("numbers.txt", "a") as file:
+            file.write(f"{date} Arctic Blast {number}\n")
+        st.success(f"Number {number} saved!")
+    
+    # Back button to go to home page
+    if st.button("Back"):
+        go_to_page("home")
 
 
 
