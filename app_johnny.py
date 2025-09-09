@@ -1,6 +1,9 @@
 import streamlit as st
 
-st.title("Hello, brotha!")
+button = st.button("click here")
+
+if button == True:
+  st.title("hello")
 
 
 
