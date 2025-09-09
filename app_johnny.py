@@ -10,6 +10,7 @@ if "page" not in st.session_state:
 # Function to switch page
 def go_to_page(page_name):
     st.session_state.page = page_name
+    st.experimental_rerun()
 
 
 
@@ -18,19 +19,19 @@ if st.session_state.page == "home":
     st.title("Welcome!")
     if st.button("Blue Raspberry"):
         go_to_page("blue_razz")
-    elif st.button("Tiger Blood"):
+    if st.button("Tiger Blood"):
         go_to_page("tiger_blood")
-    elif st.button("Banana"):
+    if st.button("Banana"):
         go_to_page("banana")
-    elif st.button("Wedding Cake"):
+    if st.button("Wedding Cake"):
         go_to_page("wedding_cake")
-    elif st.button("Strawberry Lemonade"):
+    if st.button("Strawberry Lemonade"):
         go_to_page("straw_lem")
-    elif st.button("Sour Apple"):
+    if st.button("Sour Apple"):
         go_to_page("sour_apple")
-    elif st.button("Cotton Candy"):
+    if st.button("Cotton Candy"):
         go_to_page("cotton_candy")
-    elif st.button("Arctic Blast"):
+    if st.button("Arctic Blast"):
         go_to_page("arctic_blast")
     
     
