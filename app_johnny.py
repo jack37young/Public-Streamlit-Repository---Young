@@ -13,7 +13,7 @@ def go_to_page(page_name):
 # Page 1: Home page with "Blueberry" button
 if st.session_state.page == "home":
     st.title("Welcome!")
-    if st.button("Blueberry):
+    if st.button("Blueberry"):
         go_to_page("blueberry")
     
 
