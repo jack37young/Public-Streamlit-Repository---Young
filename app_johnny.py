@@ -12,11 +12,12 @@ def go_to_page(page_name):
 if st.session_state.page == "home":
     st.title("Welcome!")
     if st.button("Blueberry"):
-        go_to_page("number_input")
+        go_to_page("bluberry")
+    
 
 # Page 2: Number input page
-elif st.session_state.page == "number_input":
-    st.title("Number Input Page")
+elif st.session_state.page == "blueberry":
+    st.title("Blueberry")
     
     # Number input
     number = st.number_input("Enter a number:", value=0)
