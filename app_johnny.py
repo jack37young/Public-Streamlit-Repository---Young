@@ -9,21 +9,21 @@ def go_to_page(page_name):
     st.session_state.page = page_name
 
 if st.button("Blue Raspberry"):
-        flavor = "Blue Raspberry"
-    elif st.button("Tiger Blood"):
-        flavor = "Tiger Bloode"
-    elif st.button("Banana"):
-        flavor = "Banana"
-    elif st.button("Wedding Cake"):
-        flavor = "Wedding Cake"
-    elif st.button("Strawberry Lemonade"):
-        flavor = "Strawberry Lemonade"
-    elif st.button("Sour Apple"):
-        flavor = "Sour Apple"
-    elif st.button("Cotton Candy"):
-        flavor = "Cotton Candy"
-    elif st.button("Arctic Blast"):
-        flavor = "Arctic Blast"
+    flavor = "Blue Raspberry"
+elif st.button("Tiger Blood"):
+    flavor = "Tiger Bloode"
+elif st.button("Banana"):
+    flavor = "Banana"
+elif st.button("Wedding Cake"):
+    flavor = "Wedding Cake"
+elif st.button("Strawberry Lemonade"):
+    flavor = "Strawberry Lemonade"
+elif st.button("Sour Apple"):
+    flavor = "Sour Apple"
+elif st.button("Cotton Candy"):
+    flavor = "Cotton Candy"
+elif st.button("Arctic Blast"):
+    flavor = "Arctic Blast"
 
 
 # Page 1: Home page with "Blueberry" button
