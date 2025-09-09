@@ -1,9 +1,35 @@
 import streamlit as st
 
-button = st.button("click here")
+# Initialize session state for page navigation
+if "page" not in st.session_state:
+    st.session_state.page = "home"
 
-if button == True:
-  st.title("hello")
+# Function to switch page
+def go_to_page(page_name):
+    st.session_state.page = page_name
+
+# Page 1: Home page with "Blueberry" button
+if st.session_state.page == "home":
+    st.title("Welcome!")
+    if st.button("Blueberry"):
+        go_to_page("number_input")
+
+# Page 2: Number input page
+elif st.session_state.page == "number_input":
+    st.title("Number Input Page")
+    
+    # Number input
+    number = st.number_input("Enter a number:", value=0)
+    
+    if st.button("Submit"):
+        # Write the number to a text file
+        with open("numbers.txt", "a") as file:
+            file.write(f"{number}\n")
+        st.success(f"Number {number} saved!")
+    
+    # Back button to go to home page
+    if st.button("Back"):
+        go_to_page("home")
 
 
 
