@@ -48,7 +48,7 @@ if st.session_state.page == "home":
         go_to_page("arctic_blast")
 
 #Blue Raspberry Page
-if st.session_state.page == "blue_razz":
+elif st.session_state.page == "blue_razz":
     st.title("Blue Raspberry")
     
     # Number input
@@ -67,7 +67,7 @@ if st.session_state.page == "blue_razz":
 
 
 #Tiger Blood Page
-if st.session_state.page == "tiger_blood":
+elif st.session_state.page == "tiger_blood":
     st.title("Tiger Blood")
     
     # Number input
@@ -86,7 +86,7 @@ if st.session_state.page == "tiger_blood":
 
 
 #Banana Page
-if st.session_state.page == "banana":
+elif st.session_state.page == "banana":
     st.title("Banana")
     
     # Number input
@@ -106,7 +106,7 @@ if st.session_state.page == "banana":
 
 
 #Wedding Cake Page
-if st.session_state.page == "wedding_cake":
+elif st.session_state.page == "wedding_cake":
     st.title("Wedding Cake")
     
     # Number input
@@ -125,7 +125,7 @@ if st.session_state.page == "wedding_cake":
 
 
 #Strawberry Lemonade Page
-if st.session_state.page == "straw_lem":
+elif st.session_state.page == "straw_lem":
     st.title("Strawberry Lemonade")
     
     # Number input
@@ -144,7 +144,7 @@ if st.session_state.page == "straw_lem":
 
 
 #Sour Apple Page
-if st.session_state.page == "sour_apple":
+elif st.session_state.page == "sour_apple":
     st.title("Sour Apple")
     
     # Number input
@@ -163,7 +163,7 @@ if st.session_state.page == "sour_apple":
 
 
 #Cotton Candy Page
-if st.session_state.page == "cotton_candy":
+elif st.session_state.page == "cotton_candy":
     st.title("Cotton Candy")
     
     # Number input
@@ -183,7 +183,7 @@ if st.session_state.page == "cotton_candy":
 
 
 #Arctic Blast Page
-if st.session_state.page == "arctic_blast":
+elif st.session_state.page == "arctic_blast":
     st.title("Arctic Blast")
     
     # Number input
