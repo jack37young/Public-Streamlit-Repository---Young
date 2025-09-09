@@ -12,7 +12,7 @@ def go_to_page(page_name):
 if st.session_state.page == "home":
     st.title("Welcome!")
     if st.button("Blueberry"):
-        go_to_page("bluberry")
+        go_to_page("blueberry")
     
 
 # Page 2: Number input page
