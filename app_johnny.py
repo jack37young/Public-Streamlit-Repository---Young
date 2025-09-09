@@ -1,4 +1,7 @@
 import streamlit as st
+import pandas as pd
+import os 
+from datetime import date
 
 # Initialize session state for page navigation
 if "page" not in st.session_state:
@@ -13,16 +16,32 @@ def go_to_page(page_name):
 # Page 1: Home page with "Blueberry" button
 if st.session_state.page == "home":
     st.title("Welcome!")
-    if st.button("Blueberry"):
-        go_to_page("blueberry")
+    if st.button("Blue Raspberry"):
+        go_to_page("blue_razz")
+    elif st.button("Tiger Blood"):
+        go_to_page("tiger_blood")
+    elif st.button("Banana"):
+        go_to_page("banana")
+    elif st.button("Wedding Cake"):
+        go_to_page("wedding_cake")
+    elif st.button("Strawberry Lemonade"):
+        go_to_page("straw_lem")
+    elif st.button("Sour Apple"):
+        go_to_page("sour_apple")
+    elif st.button("Cotton Candy"):
+        go_to_page("cotton_candy")
+    elif st.button("Arctic Blast"):
+        go_to_page("arctic_blast")
+    
     
 
-# Page 2: Number input page
-elif st.session_state.page == "blueberry":
-    st.title("Blueberry")
+#Blue Raspberry Page
+elif st.session_state.page == "blue_razz":
+    st.title("Blue Raspberry")
     
     # Number input
-    number = st.number_input("Enter a number:", value=0)
+    date = st.date_input("Date:")
+    number = st.number_input("How many cups sold: ", value=0)
     
     if st.button("Submit"):
         # Write the number to a text file
@@ -33,6 +52,63 @@ elif st.session_state.page == "blueberry":
     # Back button to go to home page
     if st.button("Back"):
         go_to_page("home")
+
+
+#Blue Raspberry Page
+elif st.session_state.page == "blue_razz":
+    st.title("Blue Raspberry")
+    
+    # Number input
+    date = st.date_input("Date:")
+    number = st.number_input("How many cups sold: ", value=0)
+    
+    if st.button("Submit"):
+        # Write the number to a text file
+        with open("numbers.txt", "a") as file:
+            file.write(f"{number}\n")
+        st.success(f"Number {number} saved!")
+    
+    # Back button to go to home page
+    if st.button("Back"):
+        go_to_page("home")
+
+
+#Blue Raspberry Page
+elif st.session_state.page == "blue_razz":
+    st.title("Blue Raspberry")
+    
+    # Number input
+    date = st.date_input("Date:")
+    number = st.number_input("How many cups sold: ", value=0)
+    
+    if st.button("Submit"):
+        # Write the number to a text file
+        with open("numbers.txt", "a") as file:
+            file.write(f"{number}\n")
+        st.success(f"Number {number} saved!")
+    
+    # Back button to go to home page
+    if st.button("Back"):
+        go_to_page("home")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
