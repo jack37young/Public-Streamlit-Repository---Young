@@ -10,34 +10,29 @@ if "page" not in st.session_state:
 # Function to switch page
 def go_to_page(page_name):
     st.session_state.page = page_name
-    st.experimental_rerun()
+
+
+flavors = [
+    "Blue Raspberry",
+    "Tiger Blood",
+    "Banana",
+    "Wedding Cake",
+    "Strawberry Lemonade",
+    "Sour Apple",
+    "Cotton Candy",
+    "Arctic Blast"
+]
 
 
 
-# Page 1: Home page with "Blueberry" button
+    
 if st.session_state.page == "home":
-    st.title("Welcome!")
-    if st.button("Blue Raspberry"):
-        go_to_page("blue_razz")
-    if st.button("Tiger Blood"):
-        go_to_page("tiger_blood")
-    if st.button("Banana"):
-        go_to_page("banana")
-    if st.button("Wedding Cake"):
-        go_to_page("wedding_cake")
-    if st.button("Strawberry Lemonade"):
-        go_to_page("straw_lem")
-    if st.button("Sour Apple"):
-        go_to_page("sour_apple")
-    if st.button("Cotton Candy"):
-        go_to_page("cotton_candy")
-    if st.button("Arctic Blast"):
-        go_to_page("arctic_blast")
-    
-    
+    st.title("Welcome! Select a flavor from the dropdown above to enter sales.")
+    selected_page = st.selectbox("Choose a flavor:", flavors)
+    st.session_state.page = selected_page
 
 #Blue Raspberry Page
-elif st.session_state.page == "blue_razz":
+if st.session_state.page == "blue_razz":
     st.title("Blue Raspberry")
     
     # Number input
@@ -56,7 +51,7 @@ elif st.session_state.page == "blue_razz":
 
 
 #Tiger Blood Page
-elif st.session_state.page == "tiger_blood":
+if st.session_state.page == "tiger_blood":
     st.title("Tiger Blood")
     
     # Number input
@@ -75,7 +70,7 @@ elif st.session_state.page == "tiger_blood":
 
 
 #Banana Page
-elif st.session_state.page == "banana":
+if st.session_state.page == "banana":
     st.title("Banana")
     
     # Number input
@@ -95,7 +90,7 @@ elif st.session_state.page == "banana":
 
 
 #Wedding Cake Page
-elif st.session_state.page == "wedding_cake":
+if st.session_state.page == "wedding_cake":
     st.title("Wedding Cake")
     
     # Number input
@@ -114,7 +109,7 @@ elif st.session_state.page == "wedding_cake":
 
 
 #Strawberry Lemonade Page
-elif st.session_state.page == "straw_lem":
+if st.session_state.page == "straw_lem":
     st.title("Strawberry Lemonade")
     
     # Number input
@@ -133,7 +128,7 @@ elif st.session_state.page == "straw_lem":
 
 
 #Sour Apple Page
-elif st.session_state.page == "sour_apple":
+if st.session_state.page == "sour_apple":
     st.title("Sour Apple")
     
     # Number input
@@ -152,7 +147,7 @@ elif st.session_state.page == "sour_apple":
 
 
 #Cotton Candy Page
-elif st.session_state.page == "cotton_candy":
+if st.session_state.page == "cotton_candy":
     st.title("Cotton Candy")
     
     # Number input
@@ -172,7 +167,7 @@ elif st.session_state.page == "cotton_candy":
 
 
 #Arctic Blast Page
-elif st.session_state.page == "arctic_blast":
+if st.session_state.page == "arctic_blast":
     st.title("Arctic Blast")
     
     # Number input
