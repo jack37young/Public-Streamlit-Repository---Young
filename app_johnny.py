@@ -1,7 +1,7 @@
 
 import streamlit as st
 import pandas as pd
-import os 
+import os
 from datetime import date
 
 excel_file = "johnny_freeze_sales.xlsx"
@@ -13,7 +13,7 @@ def go_to_page(page_name):
 def flavor_page(flavor_name):
     st.title(flavor_name)
 
-    #Number and Date inputs
+    # Number and Date inputs
     current_date = date.today()
     selected_date = st.date_input("Date:", value=current_date)
     
@@ -24,28 +24,26 @@ def flavor_page(flavor_name):
             # Read the existing Excel file into a DataFrame
             # The first column is designated to the dates
             df = pd.read_excel(excel_file, index_col=0)
+            df.index = pd.to_datetime(df.index)
         except FileNotFoundError:
             # Error Checking in case file does not exist
             df = pd.DataFrame()
-            # Fill any missing values with 0
-        df = df.fillna(0)
-        
-        # Make sure the date is in the correct Datetime
-        df.index = pd.to_datetime(df.index)
         
         # Convert the selected date to a datetime object
         selected_date_dt = pd.to_datetime(selected_date)
 
         # Get the current value, defaulting to 0 if the cell is empty or doesn't exist
+        # This prevents the TypeError when adding to a new record
         current_sales = df.at[selected_date_dt, flavor_name] if selected_date_dt in df.index and flavor_name in df.columns else 0
-
+        
         # Update the DataFrame with the new sales data, creates a new row if date does not yet exist
-        # The .at method is used for fast scalar access
+        # Add the new number to the existing value
         df.at[selected_date_dt, flavor_name] = current_sales + number
+        
+        # Write the updated DataFrame back to the Excel file
         df.to_excel(excel_file, index=True)
         st.success(f"Successfully saved {number} cups of {flavor_name} sales for {selected_date}!")
-
-        
+    
     # Button to go back to the home page
     if st.button("Back to Home"):
         go_to_page("home")
