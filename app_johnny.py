@@ -13,6 +13,7 @@ def go_to_page(page_name):
 
 
 flavors = [
+    "Home"
     "Blue Raspberry",
     "Tiger Blood",
     "Banana",
